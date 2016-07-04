@@ -1,5 +1,5 @@
 #!/bin/sh
 
-service docker start
-docker-compose up
+docker daemon &
+docker-compose up -d
 ./mvnw install -Dverify.database=true
