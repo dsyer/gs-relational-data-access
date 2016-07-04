@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Arrays;
@@ -29,7 +30,9 @@ public class Application implements CommandLineRunner {
 
         log.info("Creating tables");
 
-        jdbcTemplate.execute("DROP TABLE customers IF EXISTS");
+        try {
+            jdbcTemplate.execute("DROP TABLE customers");
+        } catch (DataAccessException e) {}
         jdbcTemplate.execute("CREATE TABLE customers(" +
                 "id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
 

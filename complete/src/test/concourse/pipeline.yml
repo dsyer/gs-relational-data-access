@@ -1,0 +1,18 @@
+---
+resources:
+- name: source
+  type: git
+  source:
+    uri: https://github.com/dsyer/gs-relational-data-access.git
+    branch: mysql
+
+jobs:
+- name: build
+  plan:
+  - get: source
+    trigger: true
+  - aggregate:
+    - task: maven
+      file: source/complete/src/test/concourse/task-maven.yml
+    - task: gradle
+      file: source/complete/src/test/concourse/task-gradle.yml
