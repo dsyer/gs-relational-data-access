@@ -13,6 +13,7 @@ jobs:
     trigger: true
   - aggregate:
     - task: maven
+      privileged: true
       file: source/complete/src/test/concourse/task-maven.yml
     - task: gradle
       file: source/complete/src/test/concourse/task-gradle.yml
