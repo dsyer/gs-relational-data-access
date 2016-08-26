@@ -49,13 +49,7 @@ Spring provides a template class called `JdbcTemplate` that makes it easy to wor
 include::complete/src/main/java/hello/Application.java[]
 ----
 
-`@SpringBootApplication` is a convenience annotation that adds all of the following:
-    
-- `@Configuration` tags the class as a source of bean definitions for the application context.
-- `@EnableAutoConfiguration` tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
-- `@ComponentScan` tells Spring to look for other components, configurations, and services in the the `hello` package. In this case, there aren't any.
-
-The `main()` method uses Spring Boot's `SpringApplication.run()` method to launch an application. Did you notice that there wasn't a single line of XML? No **web.xml** file either. This web application is 100% pure Java and you didn't have to deal with configuring any plumbing or infrastructure.
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application.adoc[]
 
 Spring Boot spots *H2*, an in-memory relational database engine, and automatically creates a connection. Because we are using *spring-jdbc*, Spring Boot automatically creates a `JdbcTemplate`. The `@Autowired JdbcTemplate` field automatically loads it and makes it available.
 
